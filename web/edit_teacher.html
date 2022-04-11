@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑教师信息</title>
+    <link rel="stylesheet" href="css/edit_stu&tea.css">
+</head>
+<body class="edit_bgc">
+    <div class="big">
+        <form action="#" method="post">
+            <table>
+                <caption>编辑教师信息</caption>
+                <tr>
+                    <td class="left"><label for="username">姓名</label></td>
+                    <td class="right"><input name="username" id="username" placeholder="请输入姓名"></td>
+                </tr>
+                <tr>
+                    <td class="left"><label for="student_id">教师编号</label></td>
+                    <td class="right"><input name="student_id" id="student_id" placeholder="请输入教师编号"></td>
+                </tr>
+                <tr>
+                    <td class="left"><label for="age">年龄</label></td>
+                    <td class="right"><input name="age" id="age" placeholder="请输入年龄"></td>
+                </tr>
+                
+                <tr>
+                    <td class="left"><label>性别</label></td>
+                    <td class="right">
+                        <input type="radio" name="sex" value="male" checked="checked"> 男
+                        <input type="radio" name="sex" value="female"> 女
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><label for="class">年级</label></td>
+                    <td class="right"><select name="class">
+                        <option value="">--请选择--</option>
+                        <option value="1">一年级</option>
+                        <option value="2">二年级</option>
+                        <option value="2">三年级</option>
+                        <option value="2">四年级</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td class="left"><label for="subject">专业</label></td>
+                    <td class="right"><select name="subject">
+                        <option value="">--请选择--</option>
+                        <option value="1">人工智能一班</option>
+                        <option value="2">人工智能二班</option>
+                        <option value="2">人工智能三班</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td class="left"><label for="address">家庭住址</label></td>
+                    <td class="right"><input name="address" id="address" placeholder="请输入家庭住址"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" id="sub" value="确定"></td>
+                    <td id="esc"><a id="esc_a" href="javascript:window.opener=null;window.open('','_self');window.close();">取消</a></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
