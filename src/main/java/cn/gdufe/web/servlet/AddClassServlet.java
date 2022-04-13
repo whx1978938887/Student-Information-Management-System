@@ -1,6 +1,5 @@
 package cn.gdufe.web.servlet;
 
-
 import cn.gdufe.domain.Class;
 import cn.gdufe.service.ClassService;
 import cn.gdufe.service.impl.ClassServiceImpl;
