@@ -1,6 +1,6 @@
-package cn.gdufe.dao.impl;
+package cn.gdufe.service.impl.dao.impl;
 
-import cn.gdufe.dao.UserDao;
+import cn.gdufe.service.impl.dao.UserDao;
 import cn.gdufe.domain.User;
 import cn.gdufe.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

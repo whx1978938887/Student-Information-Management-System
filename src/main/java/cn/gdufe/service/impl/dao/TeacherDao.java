@@ -1,4 +1,4 @@
-package cn.gdufe.dao;
+package cn.gdufe.service.impl.dao;
 
 import cn.gdufe.domain.Teacher;
 

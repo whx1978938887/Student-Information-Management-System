@@ -1,7 +1,7 @@
 package cn.gdufe.service.impl;
 
-import cn.gdufe.dao.UserDao;
-import cn.gdufe.dao.impl.UserDaoImpl;
+import cn.gdufe.service.impl.dao.UserDao;
+import cn.gdufe.service.impl.dao.impl.UserDaoImpl;
 import cn.gdufe.domain.User;
 import cn.gdufe.service.UserService;
 

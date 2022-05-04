@@ -1,7 +1,7 @@
-package cn.gdufe.dao.impl;
+package cn.gdufe.service.impl.dao.impl;
 
-import cn.gdufe.dao.ClassDao;
-import cn.gdufe.domain.Class;
+import cn.gdufe.service.impl.dao.TeacherDao;
+import cn.gdufe.domain.Teacher;
 import cn.gdufe.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,42 +11,53 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class ClassDaoImpl implements ClassDao {
+public class TeacherDaoImpl implements TeacherDao {
     private final JdbcTemplate template=new JdbcTemplate(JDBCUtils.getDataSource());
 
     @Override
-    public void addClass(Class c) {
+    public Teacher findTeacherByCondition(String key, String condition) {
         //1.定义sql
-        String sql="insert into class values(null,?,?,?,?,?,?,?)";
-        //2.执行sql
-        template.update(sql,c.getClassId(),c.getYear(),c.getSpecialty(),
-                c.getCollege(),c.getNumber(),c.getProportion(),c.getHeadteacher());
-    }
-
-    @Override
-    public Class findClass(String classId) {
-        //1.定义sql
-        String sql="select * from class where classId=?";
+        condition="%"+condition+"%";
+        String sql="select * from teacher where "+key+"=?";
         //2.执行sql
         try{
-            return template.queryForObject(sql,new BeanPropertyRowMapper<>(Class.class),classId);
+            return template.queryForObject(sql,new BeanPropertyRowMapper<>(Teacher.class),condition);
         }catch (Exception e){
             return null;
         }
     }
 
     @Override
-    public void deleteClass(String classId) {
+    public void addTeacher(Teacher teacher) {
         //1.定义sql
-        String sql="delete from class where classId=?";
+        String sql="insert into teacher values(null,?,?,?,?,?,?,?)";
         //2.执行sql
-        template.update(sql,classId);
+        template.update(sql,teacher.getTid(),teacher.getName(),teacher.getAge(),
+                teacher.getGender(),teacher.getGrade(),teacher.getClassId(),teacher.getAddress());
+    }
+
+    @Override
+    public Teacher findTeacher(String tid) {
+        //1.定义sql
+        String sql="select * from teacher where tid=?";
+        //2.执行sql
+        try{
+            return template.queryForObject(sql,new BeanPropertyRowMapper<>(Teacher.class),tid);
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+    @Override
+    public void deleteTeacher(String tid) {
+        String sql="delete from teacher where tid = ?";
+        template.update(sql,tid);
     }
 
     @Override
     public int findTotalCount(Map<String, String[]> condition) {
         //1.定义模板初始化sql
-        String sql="select count(*) from class where 1=1 ";
+        String sql="select count(*) from teacher where 1=1 ";
         StringBuilder sb=new StringBuilder(sql);
         //2.遍历map
         //定义参数的集合
@@ -70,8 +81,8 @@ public class ClassDaoImpl implements ClassDao {
     }
 
     @Override
-    public List<Class> findByPage(int start, int rows, Map<String, String[]> condition) {
-        String sql="select * from class where 1=1 ";
+    public List<Teacher> findByPage(int start, int rows, Map<String, String[]> condition) {
+        String sql="select * from teacher where 1=1 ";
         StringBuilder sb=new StringBuilder(sql);
         //2.遍历map
         //定义参数的集合
@@ -99,15 +110,15 @@ public class ClassDaoImpl implements ClassDao {
         sql=sb.toString();
         System.out.println(sql);
         System.out.println(params);
-        return template.query(sql, new BeanPropertyRowMapper<>(Class.class),params.toArray());
+        return template.query(sql, new BeanPropertyRowMapper<>(Teacher.class),params.toArray());
     }
 
     @Override
-    public void updateClass(Class c) {
+    public void updateTeacher(Teacher teacher) {
         //1.定义sql
-        String sql="update class set year=?,specialty=?,college=?,number=?,proportion=?,headteacher=? where classId=?";
+        String sql="update teacher set name=?,age=?,gender=?,grade=?,classId=?,address=? where tid=?";
         //2.执行sql
-        template.update(sql,c.getYear(),c.getSpecialty(),c.getCollege(),c.getNumber(),
-                c.getProportion(),c.getHeadteacher(),c.getClassId());
+        template.update(sql,teacher.getName(),teacher.getAge(),teacher.getGender(),
+                teacher.getClassId(),teacher.getAddress(),teacher.getTid());
     }
 }
