@@ -1,7 +1,7 @@
 package cn.gdufe.service.impl;
 
-import cn.gdufe.service.impl.dao.ClassDao;
-import cn.gdufe.service.impl.dao.impl.ClassDaoImpl;
+import cn.gdufe.dao.ClassDao;
+import cn.gdufe.dao.impl.ClassDaoImpl;
 import cn.gdufe.domain.Class;
 import cn.gdufe.domain.PageBean;
 import cn.gdufe.service.ClassService;

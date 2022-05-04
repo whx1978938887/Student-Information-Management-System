@@ -1,4 +1,4 @@
-package cn.gdufe.service.impl.dao;
+package cn.gdufe.dao;
 
 import cn.gdufe.domain.Class;
 import java.util.List;

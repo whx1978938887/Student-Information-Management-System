@@ -1,7 +1,7 @@
-package cn.gdufe.service.impl.dao.impl;
+package cn.gdufe.dao.impl;
 
-import cn.gdufe.service.impl.dao.ClassDao;
-import cn.gdufe.domain.Class;
+import cn.gdufe.dao.StudentDao;
+import cn.gdufe.domain.Student;
 import cn.gdufe.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,42 +11,40 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class ClassDaoImpl implements ClassDao {
+public class StudentDaoImpl implements StudentDao {
     private final JdbcTemplate template=new JdbcTemplate(JDBCUtils.getDataSource());
 
     @Override
-    public void addClass(Class c) {
+    public void addStudent(Student student) {
         //1.定义sql
-        String sql="insert into class values(null,?,?,?,?,?,?,?)";
+        String sql="insert into student values(null,?,?,?,?,?,?,?)";
         //2.执行sql
-        template.update(sql,c.getClassId(),c.getYear(),c.getSpecialty(),
-                c.getCollege(),c.getNumber(),c.getProportion(),c.getHeadteacher());
+        template.update(sql,student.getSid(),student.getName(),student.getAge(),
+                student.getGender(),student.getGrade(),student.getClassId(),student.getAddress());
     }
 
     @Override
-    public Class findClass(String classId) {
+    public Student findStudent(String sid) {
         //1.定义sql
-        String sql="select * from class where classId=?";
+        String sql="select * from student where sid=?";
         //2.执行sql
         try{
-            return template.queryForObject(sql,new BeanPropertyRowMapper<>(Class.class),classId);
+            return template.queryForObject(sql,new BeanPropertyRowMapper<>(Student.class),sid);
         }catch (Exception e){
             return null;
         }
     }
 
     @Override
-    public void deleteClass(String classId) {
-        //1.定义sql
-        String sql="delete from class where classId=?";
-        //2.执行sql
-        template.update(sql,classId);
+    public void delStudent(String sid) {
+        String sql="delete from student where sid=?";
+        template.update(sql,sid);
     }
 
     @Override
     public int findTotalCount(Map<String, String[]> condition) {
         //1.定义模板初始化sql
-        String sql="select count(*) from class where 1=1 ";
+        String sql="select count(*) from student where 1=1 ";
         StringBuilder sb=new StringBuilder(sql);
         //2.遍历map
         //定义参数的集合
@@ -70,8 +68,8 @@ public class ClassDaoImpl implements ClassDao {
     }
 
     @Override
-    public List<Class> findByPage(int start, int rows, Map<String, String[]> condition) {
-        String sql="select * from class where 1=1 ";
+    public List<Student> findByPage(int start, int rows, Map<String, String[]> condition) {
+        String sql="select * from student where 1=1 ";
         StringBuilder sb=new StringBuilder(sql);
         //2.遍历map
         //定义参数的集合
@@ -99,15 +97,15 @@ public class ClassDaoImpl implements ClassDao {
         sql=sb.toString();
         System.out.println(sql);
         System.out.println(params);
-        return template.query(sql, new BeanPropertyRowMapper<>(Class.class),params.toArray());
+        return template.query(sql, new BeanPropertyRowMapper<>(Student.class),params.toArray());
     }
 
     @Override
-    public void updateClass(Class c) {
+    public void updateStudent(Student student) {
         //1.定义sql
-        String sql="update class set year=?,specialty=?,college=?,number=?,proportion=?,headteacher=? where classId=?";
+        String sql="update student set name=?,age=?,gender=?,grade=?,classId=?,address=? where sid=?";
         //2.执行sql
-        template.update(sql,c.getYear(),c.getSpecialty(),c.getCollege(),c.getNumber(),
-                c.getProportion(),c.getHeadteacher(),c.getClassId());
+        template.update(sql,student.getName(),student.getAge(),student.getGender(),
+                student.getClassId(),student.getAddress(),student.getSid());
     }
 }
