@@ -1,43 +1,31 @@
 package cn.gdufe.service;
 
 import cn.gdufe.domain.Class;
-import cn.gdufe.domain.PageBean;
-
-import java.util.Map;
 
 public interface ClassService {
 
     /**
      * 添加班级
-     * @param c
+     * @param c 班级对象
      */
     void addClass(Class c);
 
     /**
      * 通过id查询班级
-     * @param classId
-     * @return
+     * @param classId 班级id
+     * @return 班级对象
      */
     Class findClass(String classId);
 
     /**
      * 删除班级
-     * @param classId
+     * @param classId 班级id
      */
     void deleteClass(String classId);
 
     /**
-     * 分页查询班级
-     * @param currentPage
-     * @param rows
-     * @param condition
-     * @return
-     */
-    PageBean<Class> findClassByPage(String currentPage, String rows, Map<String, String[]> condition);
-
-    /**
-     * 更新班级信息
-     * @param c
+     * 更新班级信息 班级对象
+     * @param c 班级对象
      */
     void updateClass(Class c);
 }

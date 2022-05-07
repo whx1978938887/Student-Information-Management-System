@@ -1,9 +1,8 @@
-package cn.gdufe.web.servlet;
+package cn.gdufe.web.servlet.user;
 
-import cn.gdufe.domain.Student;
-import cn.gdufe.service.StudentService;
-import cn.gdufe.service.impl.StudentServiceImpl;
-
+import cn.gdufe.domain.User;
+import cn.gdufe.service.UserService;
+import cn.gdufe.service.impl.UserServiceImpl;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,23 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/findStudentServlet")
-public class FindStudentServlet extends HttpServlet {
+@WebServlet("/findUserServlet")
+public class FindUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //1.设置编码
         request.setCharacterEncoding("utf-8");
 
         //2.获取参数
-        String sid = request.getParameter("sid");
-        StudentService service = new StudentServiceImpl();
-        Student student = service.findStudent(sid);
+        String username = request.getParameter("username");
+        UserService service = new UserServiceImpl();
+        User user = service.findUser(username);
 
         //3.将user存入request
-        request.setAttribute("student",student);
+        request.setAttribute("user",user);
 
         //4.转发到update.jsp
-        request.getRequestDispatcher("/edit_Student.jsp").forward(request,response);
+        request.getRequestDispatcher("/edit_user.jsp").forward(request,response);
     }
 
     @Override

@@ -1,49 +1,31 @@
 package cn.gdufe.dao;
 
 import cn.gdufe.domain.Class;
-import java.util.List;
-import java.util.Map;
 
 public interface ClassDao {
 
     /**
      * 添加班级
-     * @param c
+     * @param c 班级对象
      */
     void addClass(Class c);
 
     /**
      * 通过id查询班级
-     * @param classId
-     * @return
+     * @param classId 班级id
+     * @return 班级对象
      */
     Class findClass(String classId);
 
     /**
      * 删除班级
-     * @param classId
+     * @param classId 班级id
      */
     void deleteClass(String classId);
 
     /**
-     * 条件查询学生数量
-     * @param condition
-     * @return
-     */
-    int findTotalCount(Map<String, String[]> condition);
-
-    /**
-     * 分页查询班级信息
-     * @param start
-     * @param rows
-     * @param condition
-     * @return
-     */
-    List<Class> findByPage(int start, int rows, Map<String, String[]> condition);
-
-    /**
      * 更新班级信息
-     * @param c
+     * @param c 班级对象
      */
     void updateClass(Class c);
 }

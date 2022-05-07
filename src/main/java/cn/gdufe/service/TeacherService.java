@@ -1,43 +1,31 @@
 package cn.gdufe.service;
 
-import cn.gdufe.domain.PageBean;
 import cn.gdufe.domain.Teacher;
-
-import java.util.Map;
 
 public interface TeacherService {
 
     /**
      * 添加教师
-     * @param teacher
+     * @param teacher 教师对象
      */
     void addTeacher(Teacher teacher);
 
     /**
      * 通过id查找教师
-     * @param tid
-     * @return
+     * @param tid 教师id
+     * @return 教师对象
      */
     Teacher findTeacher(String tid);
 
     /**
      * 删除教师
-     * @param tid
+     * @param tid 教师的id
      */
     void deleteTeacher(String tid);
 
     /**
-     * 分页查询教师
-     * @param currentPage
-     * @param rows
-     * @param condition
-     * @return
-     */
-    PageBean<Teacher> findTeacherByPage(String currentPage, String rows, Map<String, String[]> condition);
-
-    /**
      * 更新教师信息
-     * @param teacher
+     * @param teacher 教师对象
      */
     void updateTeacher(Teacher teacher);
 }

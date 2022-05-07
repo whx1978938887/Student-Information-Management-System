@@ -1,4 +1,4 @@
-package cn.gdufe.web.servlet;
+package cn.gdufe.web.servlet.user;
 
 import cn.gdufe.domain.User;
 import cn.gdufe.service.UserService;

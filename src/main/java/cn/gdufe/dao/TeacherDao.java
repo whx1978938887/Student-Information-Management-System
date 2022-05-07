@@ -2,56 +2,30 @@ package cn.gdufe.dao;
 
 import cn.gdufe.domain.Teacher;
 
-import java.util.List;
-import java.util.Map;
-
 public interface TeacherDao {
-    /**
-     * 通过条件查询教师
-     * @param key
-     * @param tid
-     * @return
-     */
-    Teacher findTeacherByCondition(String key, String tid);
 
     /**
      * 添加教师
-     * @param teacher
+     * @param teacher 教师对象
      */
     void addTeacher(Teacher teacher);
 
     /**
      * 通过id查询教师
-     * @param tid
-     * @return
+     * @param tid 教师id
+     * @return 教师对象
      */
     Teacher findTeacher(String tid);
 
     /**
      * 删除教师
-     * @param tid
+     * @param tid 教师id
      */
     void deleteTeacher(String tid);
 
     /**
-     * 条件查询记录数量
-     * @param condition
-     * @return
-     */
-    int findTotalCount(Map<String, String[]> condition);
-
-    /**
-     * 分页查询教师信息
-     * @param start
-     * @param rows
-     * @param condition
-     * @return
-     */
-    List<Teacher> findByPage(int start, int rows, Map<String, String[]> condition);
-
-    /**
      * 更新教师信息
-     * @param teacher
+     * @param teacher 教师对象
      */
     void updateTeacher(Teacher teacher);
 }
