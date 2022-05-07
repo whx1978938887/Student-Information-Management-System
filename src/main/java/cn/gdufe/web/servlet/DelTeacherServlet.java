@@ -1,4 +1,4 @@
-package cn.gdufe.web.servlet.teacher;
+package cn.gdufe.web.servlet;
 
 import cn.gdufe.service.TeacherService;
 import cn.gdufe.service.impl.TeacherServiceImpl;

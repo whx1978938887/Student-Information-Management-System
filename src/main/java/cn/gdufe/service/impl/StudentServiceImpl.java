@@ -5,6 +5,8 @@ import cn.gdufe.dao.impl.StudentDaoImpl;
 import cn.gdufe.domain.Student;
 import cn.gdufe.service.StudentService;
 
+import java.util.Map;
+
 public class StudentServiceImpl implements StudentService {
     private final StudentDao dao = new StudentDaoImpl();
 
@@ -26,5 +28,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void updateStudent(Student student) {
         dao.updateStudent(student);
+    }
+
+    @Override
+    public Map<String, Object> findAllStudent() {
+        return dao.findAllStudent();
     }
 }

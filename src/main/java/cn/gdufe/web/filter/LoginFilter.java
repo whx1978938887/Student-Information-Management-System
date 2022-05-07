@@ -36,7 +36,7 @@ public class LoginFilter implements Filter {
             }
         }
 
-        //filterChain.doFilter(servletRequest,servletResponse);
+        filterChain.doFilter(servletRequest,servletResponse);
     }
 
     @Override

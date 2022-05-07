@@ -1,8 +1,8 @@
-package cn.gdufe.web.servlet.student;
+package cn.gdufe.web.servlet;
 
-import cn.gdufe.domain.Student;
-import cn.gdufe.service.StudentService;
-import cn.gdufe.service.impl.StudentServiceImpl;
+import cn.gdufe.domain.Teacher;
+import cn.gdufe.service.TeacherService;
+import cn.gdufe.service.impl.TeacherServiceImpl;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.ServletException;
@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
-@WebServlet("/updateStudentServlet")
-public class UpdateStudentServlet extends HttpServlet {
+@WebServlet("/updateTeacherServlet")
+public class UpdateTeacherServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //1.设置编码
@@ -24,18 +24,18 @@ public class UpdateStudentServlet extends HttpServlet {
         //2.获取参数
         Map<String, String[]> map = request.getParameterMap();
         //3.封装对象
-        Student student = new Student();
+        Teacher teacher = new Teacher();
         try {
-            BeanUtils.populate(student,map);
+            BeanUtils.populate(teacher,map);
         } catch (IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
         //4.调用service
-        StudentService service = new StudentServiceImpl();
-        service.updateStudent(student);
+        TeacherService service = new TeacherServiceImpl();
+        service.updateTeacher(teacher);
 
         //5.跳转查询页面
-        response.sendRedirect(request.getContextPath()+"/findStudentByPageServlet");
+        response.sendRedirect(request.getContextPath()+"/findTeacherByPageServlet");
     }
 
     @Override

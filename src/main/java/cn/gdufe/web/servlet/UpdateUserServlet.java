@@ -1,10 +1,8 @@
-package cn.gdufe.web.servlet.course;
+package cn.gdufe.web.servlet;
 
-import cn.gdufe.domain.Class;
-import cn.gdufe.service.ClassService;
-import cn.gdufe.service.impl.ClassServiceImpl;
+import cn.gdufe.domain.User;
+import cn.gdufe.service.impl.UserServiceImpl;
 import org.apache.commons.beanutils.BeanUtils;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,28 +12,29 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
-@WebServlet("/updateClassServlet")
-public class UpdateClassServlet extends HttpServlet {
+@WebServlet("/updateUserServlet")
+public class UpdateUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //1.设置编码
         request.setCharacterEncoding("utf-8");
-
-        //2.获取参数
+        //2.获取map
         Map<String, String[]> map = request.getParameterMap();
         //3.封装对象
-        Class c = new Class();
+        User user = new User();
         try {
-            BeanUtils.populate(c,map);
+            BeanUtils.populate(user,map);
         } catch (IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
-        //4.调用service
-        ClassService service = new ClassServiceImpl();
-        service.updateClass(c);
 
-        //5.跳转查询页面
-        response.sendRedirect(request.getContextPath()+"/findClassByPageServlet");
+        //4.调用Service修改
+        UserServiceImpl service = new UserServiceImpl();
+        service.updateUser(user);
+
+        //5.跳转到查询所有Servlet
+        response.sendRedirect(request.getContextPath()+"/menu.jsp");
+
     }
 
     @Override
