@@ -6,7 +6,7 @@ import cn.gdufe.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import java.util.Map;
+import java.util.List;
 
 public class StudentDaoImpl implements StudentDao {
     private final JdbcTemplate template=new JdbcTemplate(JDBCUtils.getDataSource());
@@ -48,9 +48,10 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public Map<String, Object> findAllStudent() {
+    public List<Student> findAllStudent() {
         //1.定义sql
         String sql="select * from student";
-        return template.queryForMap(sql);
+        //2.执行sql
+        return template.query(sql,new BeanPropertyRowMapper<>(Student.class));
     }
 }

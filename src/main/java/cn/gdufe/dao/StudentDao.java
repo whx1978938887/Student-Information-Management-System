@@ -2,6 +2,7 @@ package cn.gdufe.dao;
 
 import cn.gdufe.domain.Student;
 
+import java.util.List;
 import java.util.Map;
 
 public interface StudentDao {
@@ -32,8 +33,8 @@ public interface StudentDao {
     void updateStudent(Student student);
 
     /**
-     * 查询学生
-     * @return 学生集合
+     * 查询学生列表
+     * @return 学生列表
      */
-    Map<String, Object> findAllStudent();
+    List<Student> findAllStudent();
 }

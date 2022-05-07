@@ -1,4 +1,4 @@
-package cn.gdufe.web.servlet;
+package cn.gdufe.web.servlet.teacher;
 
 
 import cn.gdufe.domain.Teacher;

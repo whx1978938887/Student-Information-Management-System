@@ -1,8 +1,8 @@
-package cn.gdufe.web.servlet;
+package cn.gdufe.web.servlet.student;
 
+import cn.gdufe.domain.Student;
 import cn.gdufe.service.StudentService;
 import cn.gdufe.service.impl.StudentServiceImpl;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,24 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
-@WebServlet("/findAllStudent")
-public class FindAllStudent extends HttpServlet {
+@WebServlet("/findStudentServlet")
+public class FindStudentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //1.设置编码格式
+        //1.设置编码
+        request.setCharacterEncoding("utf-8");
 
-        //2.获取对象
+        //2.获取参数
+        String sid = request.getParameter("sid");
         StudentService service = new StudentServiceImpl();
-        Map<String,Object> map=service.findAllStudent();
+        Student student = service.findStudent(sid);
 
-        //3.将列表转为json
-        ObjectMapper mapper=new ObjectMapper();
-        //设置响应的数据格式为json
-        response.setContentType("application/json;charset=utf-8");
-        mapper.writeValue(response.getWriter(),map);
+        //3.将user存入request
+        request.setAttribute("student",student);
 
+        //4.转发到update.jsp
+        request.getRequestDispatcher("/edit_Student.jsp").forward(request,response);
     }
 
     @Override

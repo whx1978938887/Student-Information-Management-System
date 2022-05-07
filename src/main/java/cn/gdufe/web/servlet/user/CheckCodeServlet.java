@@ -1,4 +1,4 @@
-package cn.gdufe.web.servlet;
+package cn.gdufe.web.servlet.user;
 
 import javax.imageio.ImageIO;
 import javax.servlet.annotation.WebServlet;

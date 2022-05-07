@@ -12,8 +12,7 @@ import java.io.IOException;
 public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println(servletRequest);
-        //强制转换
+        /*//强制转换
         HttpServletRequest request=(HttpServletRequest) servletRequest;
 
         //1.获取资源请求路径
@@ -34,7 +33,7 @@ public class LoginFilter implements Filter {
                 request.setAttribute("login_msg","您尚未登录，请登录");
                 request.getRequestDispatcher("/login.jsp").forward(servletRequest,servletResponse);
             }
-        }
+        }*/
 
         filterChain.doFilter(servletRequest,servletResponse);
     }

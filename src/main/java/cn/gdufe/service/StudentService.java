@@ -2,6 +2,7 @@ package cn.gdufe.service;
 
 import cn.gdufe.domain.Student;
 
+import java.util.List;
 import java.util.Map;
 
 public interface StudentService {
@@ -36,5 +37,5 @@ public interface StudentService {
      * 查看学生
      * @return 学生集合
      */
-    Map<String, Object> findAllStudent();
+    List<Student> findAllStudent();
 }
