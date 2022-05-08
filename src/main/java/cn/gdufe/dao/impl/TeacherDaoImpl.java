@@ -6,6 +6,8 @@ import cn.gdufe.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.List;
+
 public class TeacherDaoImpl implements TeacherDao {
     private final JdbcTemplate template=new JdbcTemplate(JDBCUtils.getDataSource());
 
@@ -43,5 +45,13 @@ public class TeacherDaoImpl implements TeacherDao {
         //2.执行sql
         template.update(sql,teacher.getName(),teacher.getAge(),teacher.getGender(),
                 teacher.getClassId(),teacher.getAddress(),teacher.getTid());
+    }
+
+    @Override
+    public List<Teacher> findAllTeacher() {
+        //1.定义sql
+        String sql="select * from teacher";
+        //2.执行sql
+        return template.query(sql,new BeanPropertyRowMapper<>(Teacher.class));
     }
 }

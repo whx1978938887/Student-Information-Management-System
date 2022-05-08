@@ -2,6 +2,8 @@ package cn.gdufe.dao;
 
 import cn.gdufe.domain.Teacher;
 
+import java.util.List;
+
 public interface TeacherDao {
 
     /**
@@ -28,4 +30,10 @@ public interface TeacherDao {
      * @param teacher 教师对象
      */
     void updateTeacher(Teacher teacher);
+
+    /**
+     * 查询所有教师
+     * @return 所有教师集合
+     */
+    List<Teacher> findAllTeacher();
 }

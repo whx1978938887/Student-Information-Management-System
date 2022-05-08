@@ -5,6 +5,8 @@ import cn.gdufe.dao.impl.TeacherDaoImpl;
 import cn.gdufe.domain.Teacher;
 import cn.gdufe.service.TeacherService;
 
+import java.util.List;
+
 public class TeacherServiceImpl implements TeacherService {
     private final TeacherDao dao = new TeacherDaoImpl();
 
@@ -26,5 +28,10 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public void updateTeacher(Teacher teacher) {
         dao.updateTeacher(teacher);
+    }
+
+    @Override
+    public List<Teacher> findAllTeacher() {
+        return dao.findAllTeacher();
     }
 }
