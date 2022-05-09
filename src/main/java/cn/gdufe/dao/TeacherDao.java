@@ -3,6 +3,7 @@ package cn.gdufe.dao;
 import cn.gdufe.domain.Teacher;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TeacherDao {
 
@@ -36,4 +37,11 @@ public interface TeacherDao {
      * @return 所有教师集合
      */
     List<Teacher> findAllTeacher();
+
+    /**
+     * 按条件查询教师
+     * @param condition 条件
+     * @return 满足条件的教师
+     */
+    List<Teacher> queryTeacher(Map<String, String[]> condition);
 }

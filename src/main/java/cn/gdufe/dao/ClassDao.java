@@ -2,30 +2,21 @@ package cn.gdufe.dao;
 
 import cn.gdufe.domain.Class;
 
+import java.util.List;
+import java.util.Map;
+
 public interface ClassDao {
 
     /**
-     * 添加班级
-     * @param c 班级对象
+     * 按条件查询班级
+     * @param condition 条件
+     * @return 满足条件的班级
      */
-    void addClass(Class c);
+    List<Class> queryClass(Map<String, String[]> condition);
 
     /**
-     * 通过id查询班级
-     * @param classId 班级id
-     * @return 班级对象
+     * 查询所有班级
+     * @return 所有班级
      */
-    Class findClass(String classId);
-
-    /**
-     * 删除班级
-     * @param classId 班级id
-     */
-    void deleteClass(String classId);
-
-    /**
-     * 更新班级信息
-     * @param c 班级对象
-     */
-    void updateClass(Class c);
+    List<Class> findAllClass();
 }

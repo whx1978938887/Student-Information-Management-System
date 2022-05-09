@@ -35,4 +35,9 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findAllStudent() {
         return dao.findAllStudent();
     }
+
+    @Override
+    public List<Student> queryStudent(Map<String, String[]> condition) {
+        return dao.queryStudent(condition);
+    }
 }

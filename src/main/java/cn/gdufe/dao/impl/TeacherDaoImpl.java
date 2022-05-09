@@ -6,7 +6,10 @@ import cn.gdufe.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class TeacherDaoImpl implements TeacherDao {
     private final JdbcTemplate template=new JdbcTemplate(JDBCUtils.getDataSource());
@@ -53,5 +56,28 @@ public class TeacherDaoImpl implements TeacherDao {
         String sql="select * from teacher";
         //2.执行sql
         return template.query(sql,new BeanPropertyRowMapper<>(Teacher.class));
+    }
+
+    @Override
+    @SuppressWarnings("all")
+    public List<Teacher> queryTeacher(Map<String, String[]> condition) {
+        //1.定义sql
+        String sql="select * from teacher where 1=1";
+        StringBuilder sb = new StringBuilder(sql);
+        //2.遍历map
+        //定义参数的集合
+        List<Object> params=new ArrayList<>();
+        Set<String> keySet = condition.keySet();
+        for (String k : keySet) {
+            //获取value
+            String value = condition.get(k)[0];
+            if (value!=null&&!"".equals(value)){
+                //参数有值
+                sb.append(" and "+k+" like ? ");
+                params.add("%"+value+"%");
+            }
+        }
+        sql=sb.toString();
+        return template.query(sql,new BeanPropertyRowMapper<>(Teacher.class),params.toArray());
     }
 }

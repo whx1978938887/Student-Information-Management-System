@@ -6,6 +6,7 @@ import cn.gdufe.domain.Teacher;
 import cn.gdufe.service.TeacherService;
 
 import java.util.List;
+import java.util.Map;
 
 public class TeacherServiceImpl implements TeacherService {
     private final TeacherDao dao = new TeacherDaoImpl();
@@ -33,5 +34,10 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public List<Teacher> findAllTeacher() {
         return dao.findAllTeacher();
+    }
+
+    @Override
+    public List<Teacher> queryTeacher(Map<String, String[]> condition) {
+        return dao.queryTeacher(condition);
     }
 }

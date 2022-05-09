@@ -1,8 +1,10 @@
 package cn.gdufe.service;
 
+import cn.gdufe.domain.Student;
 import cn.gdufe.domain.Teacher;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TeacherService {
 
@@ -36,4 +38,11 @@ public interface TeacherService {
      * @return 所有教师列表
      */
     List<Teacher> findAllTeacher();
+
+    /**
+     * 按条件查询教师
+     * @param condition 条件
+     * @return 满足条件的教师
+     */
+    List<Teacher> queryTeacher(Map<String, String[]> condition);
 }

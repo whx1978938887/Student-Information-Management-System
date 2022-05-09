@@ -37,4 +37,11 @@ public interface StudentDao {
      * @return 学生列表
      */
     List<Student> findAllStudent();
+
+    /**
+     * 按条件查询学生
+     * @param condition 条件
+     * @return 满足条件的学生
+     */
+    List<Student> queryStudent(Map<String, String[]> condition);
 }
