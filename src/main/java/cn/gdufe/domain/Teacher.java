@@ -7,7 +7,8 @@ public class Teacher {
     private String age;
     private String gender;
     private String grade;
-    private String classId;
+    private String college;
+    private String specialty;
     private String address;
 
     public int getId() {
@@ -50,12 +51,28 @@ public class Teacher {
         this.gender = gender;
     }
 
-    public String getClassId() {
-        return classId;
+    public String getGrade() {
+        return grade;
     }
 
-    public void setClassId(String classId) {
-        this.classId = classId;
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
     }
 
     public String getAddress() {
@@ -64,14 +81,6 @@ public class Teacher {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getGrade() {
-        return grade;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
     }
 
     @Override
@@ -83,7 +92,8 @@ public class Teacher {
                 ", age='" + age + '\'' +
                 ", gender='" + gender + '\'' +
                 ", grade='" + grade + '\'' +
-                ", classId='" + classId + '\'' +
+                ", college='" + college + '\'' +
+                ", specialty='" + specialty + '\'' +
                 ", address='" + address + '\'' +
                 '}';
     }

@@ -2,7 +2,9 @@ package cn.gdufe.web.servlet.student;
 
 
 import cn.gdufe.domain.Student;
+import cn.gdufe.service.ClassService;
 import cn.gdufe.service.StudentService;
+import cn.gdufe.service.impl.ClassServiceImpl;
 import cn.gdufe.service.impl.StudentServiceImpl;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -42,6 +44,10 @@ public class AddStudentServlet extends HttpServlet {
                 e.printStackTrace();
             }
             service.addStudent(student);
+
+            //更新class表
+            ClassService service1=new ClassServiceImpl();
+            service1.addStudent(student);
 
             //跳转
             response.sendRedirect(request.getContextPath()+"/menu.jsp");

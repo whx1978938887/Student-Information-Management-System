@@ -17,10 +17,10 @@ public class TeacherDaoImpl implements TeacherDao {
     @Override
     public void addTeacher(Teacher teacher) {
         //1.定义sql
-        String sql="insert into teacher values(null,?,?,?,?,?,?,?)";
+        String sql="insert into teacher values(null,?,?,?,?,?,?,?,?)";
         //2.执行sql
         template.update(sql,teacher.getTid(),teacher.getName(),teacher.getAge(),
-                teacher.getGender(),teacher.getGrade(),teacher.getClassId(),teacher.getAddress());
+                teacher.getGender(),teacher.getGrade(),teacher.getCollege(),teacher.getSpecialty(),teacher.getAddress());
     }
 
     @Override
@@ -44,10 +44,10 @@ public class TeacherDaoImpl implements TeacherDao {
     @Override
     public void updateTeacher(Teacher teacher) {
         //1.定义sql
-        String sql="update teacher set name=?,age=?,gender=?,grade=?,classId=?,address=? where tid=?";
+        String sql="update teacher set name=?,age=?,gender=?,grade=?,college=?,specialty=?,address=? where tid=?";
         //2.执行sql
         template.update(sql,teacher.getName(),teacher.getAge(),teacher.getGender(),
-                teacher.getClassId(),teacher.getAddress(),teacher.getTid());
+                teacher.getCollege(),teacher.getSpecialty(),teacher.getAddress(),teacher.getTid());
     }
 
     @Override

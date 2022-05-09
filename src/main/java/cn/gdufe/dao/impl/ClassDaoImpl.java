@@ -2,6 +2,8 @@ package cn.gdufe.dao.impl;
 
 import cn.gdufe.dao.ClassDao;
 import cn.gdufe.domain.Class;
+import cn.gdufe.domain.Student;
+import cn.gdufe.domain.Teacher;
 import cn.gdufe.util.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -43,6 +45,38 @@ public class ClassDaoImpl implements ClassDao {
         String sql="select * from class";
         //2.执行sql
         return template.query(sql,new BeanPropertyRowMapper<>(Class.class));
+    }
+
+    @Override
+    public void addStudent(Student student) {
+        //1.定义sql
+        String sql="update class set studentNum=studentNum+1 where college=? and specialty=? and grade=?";
+        //2.执行sql
+        template.update(sql,student.getCollege(),student.getSpecialty(),student.getGrade());
+    }
+
+    @Override
+    public void deleteStudent(Student student) {
+        //1.定义sql
+        String sql="update class set studentnum=studentnum-1 where college=? and specialty=? and grade=?";
+        //2.执行sql
+        template.update(sql,student.getCollege(),student.getSpecialty(),student.getGrade());
+    }
+
+    @Override
+    public void addTeacher(Teacher teacher) {
+        //1.定义sql
+        String sql="update class set teachernum=teachernum+1 where college=? and specialty=? and grade=?";
+        //2.执行sql
+        template.update(sql,teacher.getCollege(),teacher.getSpecialty(),teacher.getGrade());
+    }
+
+    @Override
+    public void deleteTeacher(Teacher teacher) {
+        //1.定义sql
+        String sql="update class set teachernum=teachernum-1 where college=? and specialty=? and grade=?";
+        //2.执行sql
+        template.update(sql,teacher.getCollege(),teacher.getSpecialty(),teacher.getGrade());
     }
 
 }

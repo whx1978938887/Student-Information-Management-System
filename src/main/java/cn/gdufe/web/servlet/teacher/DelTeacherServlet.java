@@ -1,6 +1,9 @@
 package cn.gdufe.web.servlet.teacher;
 
+import cn.gdufe.domain.Teacher;
+import cn.gdufe.service.ClassService;
 import cn.gdufe.service.TeacherService;
+import cn.gdufe.service.impl.ClassServiceImpl;
 import cn.gdufe.service.impl.TeacherServiceImpl;
 
 import javax.servlet.ServletException;
@@ -19,6 +22,11 @@ public class DelTeacherServlet extends HttpServlet {
         //2.调用service删除
         TeacherService service = new TeacherServiceImpl();
         service.deleteTeacher(tid);
+
+        //更新class表
+        ClassService service1=new ClassServiceImpl();
+        Teacher teacher = service.findTeacher(tid);
+        service1.deleteTeacher(teacher);
 
         //3.跳转到查询所有Servlet
         response.sendRedirect(request.getContextPath()+"/menu.jsp");

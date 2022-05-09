@@ -17,10 +17,10 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public void addStudent(Student student) {
         //1.定义sql
-        String sql="insert into student values(null,?,?,?,?,?,?,?)";
+        String sql="insert into student values(null,?,?,?,?,?,?,?,?)";
         //2.执行sql
         template.update(sql,student.getSid(),student.getName(),student.getAge(),
-                student.getGender(),student.getGrade(),student.getClassId(),student.getAddress());
+                student.getGender(),student.getGrade(),student.getCollege(),student.getSpecialty(),student.getAddress());
     }
 
     @Override
@@ -44,10 +44,10 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public void updateStudent(Student student) {
         //1.定义sql
-        String sql="update student set name=?,age=?,gender=?,grade=?,classId=?,address=? where sid=?";
+        String sql="update student set name=?,age=?,gender=?,grade=?,college=?,specialty=?,address=? where sid=?";
         //2.执行sql
         template.update(sql,student.getName(),student.getAge(),student.getGender(),
-                student.getClassId(),student.getAddress(),student.getSid());
+                student.getGrade(),student.getCollege(),student.getSpecialty(),student.getAddress(),student.getSid());
     }
 
     @Override

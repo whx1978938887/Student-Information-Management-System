@@ -2,7 +2,9 @@ package cn.gdufe.web.servlet.teacher;
 
 
 import cn.gdufe.domain.Teacher;
+import cn.gdufe.service.ClassService;
 import cn.gdufe.service.TeacherService;
+import cn.gdufe.service.impl.ClassServiceImpl;
 import cn.gdufe.service.impl.TeacherServiceImpl;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -42,6 +44,10 @@ public class AddTeacherServlet extends HttpServlet {
                 e.printStackTrace();
             }
             service.addTeacher(teacher);
+
+            //更新class表
+            ClassService service1=new ClassServiceImpl();
+            service1.addTeacher(teacher);
 
             //跳转
             response.sendRedirect(request.getContextPath()+"/menu.jsp");
