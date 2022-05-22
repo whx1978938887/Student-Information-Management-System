@@ -34,7 +34,7 @@ public class AddTeacherServlet extends HttpServlet {
         if (findTeacher!=null){
             //提示信息
             request.setAttribute("add_msg","教师已存在！");
-            request.getRequestDispatcher("/menu.jsp").forward(request,response);
+            request.getRequestDispatcher("/addTeacher.jsp").forward(request,response);
         }else{
             //封装teacher对象
             Teacher teacher = new Teacher();
@@ -50,7 +50,7 @@ public class AddTeacherServlet extends HttpServlet {
             service1.addTeacher(teacher);
 
             //跳转
-            response.sendRedirect(request.getContextPath()+"/menu.jsp");
+            response.sendRedirect(request.getContextPath()+"/addTeacher.jsp");
         }
     }
 

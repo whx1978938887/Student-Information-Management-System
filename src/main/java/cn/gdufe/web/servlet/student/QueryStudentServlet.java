@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +30,9 @@ public class QueryStudentServlet extends HttpServlet {
         List<Student> list= service.queryStudent(condition);
 
         //4.响应
-        ObjectMapper mapper = new ObjectMapper();
-        response.setContentType("application/json;charset=utf-8");
-        mapper.writeValue(response.getWriter(),list);
+        HttpSession session = request.getSession();
+        session.setAttribute("students",list);
+        request.getRequestDispatcher("/selectStudent.jsp").forward(request,response);
     }
 
     @Override

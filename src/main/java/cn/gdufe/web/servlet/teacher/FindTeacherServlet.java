@@ -25,15 +25,10 @@ public class FindTeacherServlet extends HttpServlet {
         TeacherService service = new TeacherServiceImpl();
         Teacher teacher = service.findTeacher(tid);
 
-        //3.将数据转为json
-        JsonMapper mapper = new JsonMapper();
-        String json = mapper.writeValueAsString(teacher);
-
-        //4.将数据存入session
+        //3.将数据存入session
         HttpSession session = request.getSession();
-        session.setAttribute("teacher",json);
-        response.setContentType("application/json;charset=utf-8");
-        mapper.writeValue(response.getWriter(),teacher);
+        session.setAttribute("teacher",teacher);
+        request.getRequestDispatcher("/updateTeacher.jsp").forward(request,response);
     }
 
     @Override

@@ -3,7 +3,6 @@ package cn.gdufe.web.servlet.student;
 import cn.gdufe.domain.Student;
 import cn.gdufe.service.StudentService;
 import cn.gdufe.service.impl.StudentServiceImpl;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,15 +24,10 @@ public class FindStudentServlet extends HttpServlet {
         StudentService service = new StudentServiceImpl();
         Student student = service.findStudent(sid);
 
-        //3.将数据转为json
-        JsonMapper mapper = new JsonMapper();
-        String json = mapper.writeValueAsString(student);
-
-        //4.将数据存入session
+        //3.将数据存入session
         HttpSession session = request.getSession();
-        session.setAttribute("student",json);
-        response.setContentType("application/json;charset=utf-8");
-        mapper.writeValue(response.getWriter(),student);
+        session.setAttribute("student",student);
+        request.getRequestDispatcher("/updateStudent.jsp").forward(request,response);
     }
 
     @Override

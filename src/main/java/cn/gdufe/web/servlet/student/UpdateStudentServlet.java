@@ -35,7 +35,7 @@ public class UpdateStudentServlet extends HttpServlet {
         service.updateStudent(student);
 
         //5.跳转查询页面
-        response.sendRedirect(request.getContextPath()+"/findStudentByPageServlet");
+        response.sendRedirect(request.getContextPath()+"/findListStudent");
     }
 
     @Override

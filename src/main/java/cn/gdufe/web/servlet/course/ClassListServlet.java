@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -25,9 +26,9 @@ public class ClassListServlet extends HttpServlet {
         List<Class> c = service.findAllClass();
 
         //3.响应
-        JsonMapper mapper = new JsonMapper();
-        response.setContentType("application/json;charset=utf-8");
-        mapper.writeValue(response.getWriter(),c);
+        HttpSession session = request.getSession();
+        session.setAttribute("classes",c);
+        request.getRequestDispatcher("/selectClass.jsp").forward(request,response);
     }
 
     @Override

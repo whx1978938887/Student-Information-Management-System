@@ -35,7 +35,7 @@ public class UpdateTeacherServlet extends HttpServlet {
         service.updateTeacher(teacher);
 
         //5.跳转查询页面
-        response.sendRedirect(request.getContextPath()+"/findTeacherByPageServlet");
+        response.sendRedirect(request.getContextPath()+"/findListTeacher");
     }
 
     @Override

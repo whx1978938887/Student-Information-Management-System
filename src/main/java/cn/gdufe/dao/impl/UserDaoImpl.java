@@ -50,9 +50,9 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void updateUser(User user) {
         //1.定义sql
-        String sql="update user set password=?,email=?,name=?,phone=?,gender=? where username=?";
+        String sql="update user set name=?,password=?,email=?,name=?,phone=?,gender=? where username=?";
         //2.执行sql
-        template.update(sql,user.getPassword(),user.getName(),user.getPhone(),
-                user.getPhone(),user.getGender(),user.getUsername());
+        template.update(sql,user.getName(),user.getPassword(),user.getEmail(),user.getName(),user.getPhone(),
+              user.getGender(),user.getUsername());
     }
 }

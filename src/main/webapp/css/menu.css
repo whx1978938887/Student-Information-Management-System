@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: 'iconfont';
-    src: url('./tubiao/iconfont.ttf') format('truetype');
+    src: url('../tubiao/iconfont.ttf') format('truetype');
 }
 
 li {
@@ -82,7 +82,7 @@ li {
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    vertical-align: 0px;
+    vertical-align: 0;
 
     color: #fff;
 }
@@ -305,4 +305,12 @@ ol {
     left: 365px;
     font-size: smaller;
     color: red;
+}
+.title{
+    width: auto;
+    height: 30px;
+    background-color: whitesmoke;
+}
+.tab {
+    display: none;
 }

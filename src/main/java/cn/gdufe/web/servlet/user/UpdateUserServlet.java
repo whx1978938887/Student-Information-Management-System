@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
@@ -31,9 +32,12 @@ public class UpdateUserServlet extends HttpServlet {
         //4.调用Service修改
         UserServiceImpl service = new UserServiceImpl();
         service.updateUser(user);
+        User user1 = service.findUser(user.getUsername());
+        HttpSession session = request.getSession();
+        session.setAttribute("user",user1);
 
         //5.跳转到查询所有Servlet
-        response.sendRedirect(request.getContextPath()+"/menu.jsp");
+        response.sendRedirect(request.getContextPath()+"/user.jsp");
 
     }
 

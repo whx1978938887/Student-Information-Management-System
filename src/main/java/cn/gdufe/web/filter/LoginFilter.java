@@ -12,13 +12,13 @@ import java.io.IOException;
 public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        /*//强制转换
+        //强制转换
         HttpServletRequest request=(HttpServletRequest) servletRequest;
 
         //1.获取资源请求路径
         String uri = request.getRequestURI();
         //2.判断是否包含登录相关资源路径，要注意排除css/js/图片/验证码等资源
-        if (uri.contains("/login.jsp")||uri.contains("/loginServlet")||uri.contains("/css/")||uri.contains("/js/")||uri.contains("/fonts/")||uri.contains("/checkCodeServlet")){
+        if (uri.contains("/login.jsp")||uri.contains("/loginServlet")||uri.contains("/css/")||uri.contains("/js/")||uri.contains("/picture/")||uri.contains("/checkCodeServlet")||uri.contains("/register.jsp")||uri.contains("/registerServlet")){
             //包含，用户就是想登录,放行
             filterChain.doFilter(servletRequest,servletResponse);
         }else{
@@ -33,9 +33,9 @@ public class LoginFilter implements Filter {
                 request.setAttribute("login_msg","您尚未登录，请登录");
                 request.getRequestDispatcher("/login.jsp").forward(servletRequest,servletResponse);
             }
-        }*/
+        }
 
-        filterChain.doFilter(servletRequest,servletResponse);
+        //filterChain.doFilter(servletRequest,servletResponse);
     }
 
     @Override

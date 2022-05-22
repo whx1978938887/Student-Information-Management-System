@@ -11,6 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-<h1>hello</h1>
+    <%
+        response.sendRedirect(request.getContextPath()+"/login.jsp");
+    %>
 </body>
 </html>

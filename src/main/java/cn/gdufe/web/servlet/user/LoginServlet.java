@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user",loginUser);
             //跳转页面
-            response.sendRedirect(request.getContextPath()+"/menu.jsp");
+            response.sendRedirect(request.getContextPath()+"/main.jsp");
         }else{
             //登录失败
             //提示信息

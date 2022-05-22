@@ -25,15 +25,10 @@ public class TeacherListServlet extends HttpServlet {
         TeacherService service=new TeacherServiceImpl();
         List<Teacher> list=service.findAllTeacher();
 
-        //3.将数据封装为json
-        JsonMapper mapper = new JsonMapper();
-        String teachers = mapper.writeValueAsString(list);
-
-        //4.将数据写入session
+        //3.将数据写入session
         HttpSession session = request.getSession();
-        session.setAttribute("teachers",teachers);
-        response.setContentType("Application/Json;charset=utf-8");
-        mapper.writeValue(response.getWriter(),list);
+        session.setAttribute("teachers",list);
+        request.getRequestDispatcher("/selectTeacher.jsp").forward(request,response);
     }
 
     @Override

@@ -16,19 +16,20 @@ import java.io.IOException;
 public class DelStudentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         //1.获取id
         String sid = request.getParameter("sid");
         //2.调用service删除
         StudentService service = new StudentServiceImpl();
+        Student student = service.findStudent(sid);
         service.deleteStudent(sid);
 
         //更新class表
         ClassService service1=new ClassServiceImpl();
-        Student student = service.findStudent(sid);
         service1.deleteStudent(student);
 
         //3.跳转到查询所有Servlet
-        response.sendRedirect(request.getContextPath()+"/menu.jsp");
+        response.sendRedirect(request.getContextPath()+"/findListStudent");
     }
 
     @Override
