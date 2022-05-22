@@ -9,42 +9,39 @@ public interface StudentDao {
 
     /**
      * 添加学生
-     * @param student
+     * @param student 学生对象
      */
     void addStudent(Student student);
 
     /**
      * 通过id查询学生
-     * @param sid
-     * @return
+     * @param sid 学生id
+     * @return 学生对象
      */
     Student findStudent(String sid);
 
     /**
      * 删除学生
-     * @param sid
+     * @param sid 学生id
      */
     void delStudent(String sid);
 
     /**
-     * 条件查询学生数量
-     * @param condition
-     * @return
-     */
-    int findTotalCount(Map<String, String[]> condition);
-
-    /**
-     * 分页查询学生信息
-     * @param start
-     * @param rows
-     * @param condition
-     * @return
-     */
-    List<Student> findByPage(int start, int rows, Map<String, String[]> condition);
-
-    /**
      * 更新学生信息
-     * @param student
+     * @param student 学生对象
      */
     void updateStudent(Student student);
+
+    /**
+     * 查询学生列表
+     * @return 学生列表
+     */
+    List<Student> findAllStudent();
+
+    /**
+     * 按条件查询学生
+     * @param condition 条件
+     * @return 满足条件的学生
+     */
+    List<Student> queryStudent(Map<String, String[]> condition);
 }

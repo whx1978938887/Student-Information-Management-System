@@ -17,10 +17,10 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public void addStudent(Student student) {
         //1.定义sql
-        String sql="insert into student values(null,?,?,?,?,?,?,?)";
+        String sql="insert into student values(null,?,?,?,?,?,?,?,?)";
         //2.执行sql
         template.update(sql,student.getSid(),student.getName(),student.getAge(),
-                student.getGender(),student.getGrade(),student.getClassId(),student.getAddress());
+                student.getGender(),student.getGrade(),student.getCollege(),student.getSpecialty(),student.getAddress());
     }
 
     @Override
@@ -42,70 +42,42 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public int findTotalCount(Map<String, String[]> condition) {
-        //1.定义模板初始化sql
-        String sql="select count(*) from student where 1=1 ";
-        StringBuilder sb=new StringBuilder(sql);
-        //2.遍历map
-        //定义参数的集合
-        List<Object> params= new ArrayList<>();
-        Set<String> keySet = condition.keySet();
-        for (String k : keySet) {
-            //排除分页条件参数
-            if ("currentPage".equals(k)||"rows".equals(k)){
-                continue;
-            }
-            //获取value
-            String value = condition.get(k)[0];
-            //判断value是否有值
-            if (value!=null&& !"".equals(value)){
-                //有值
-                sb.append(" and "+k+" like ? ");
-                params.add("%"+value+"%");//？条件的值
-            }
-        }
-        return template.queryForObject(sb.toString(),Integer.class,params.toArray());
-    }
-
-    @Override
-    public List<Student> findByPage(int start, int rows, Map<String, String[]> condition) {
-        String sql="select * from student where 1=1 ";
-        StringBuilder sb=new StringBuilder(sql);
-        //2.遍历map
-        //定义参数的集合
-        List<Object> params= new ArrayList<>();
-        Set<String> keySet = condition.keySet();
-        for (String k : keySet) {
-            //排除分页条件参数
-            if ("currentPage".equals(k)||"rows".equals(k)){
-                continue;
-            }
-            //获取value
-            String value = condition.get(k)[0];
-            //判断value是否有值
-            if (value!=null&& !"".equals(value)){
-                //有值
-                sb.append(" and "+k+" like ? ");
-                params.add("%"+value+"%");//？条件的值
-            }
-        }
-        //添加分页查询
-        sb.append(" limit ?, ?");
-        //添加分页查询参数值
-        params.add(start);
-        params.add(rows);
-        sql=sb.toString();
-        System.out.println(sql);
-        System.out.println(params);
-        return template.query(sql, new BeanPropertyRowMapper<>(Student.class),params.toArray());
-    }
-
-    @Override
     public void updateStudent(Student student) {
         //1.定义sql
-        String sql="update student set name=?,age=?,gender=?,grade=?,classId=?,address=? where sid=?";
+        String sql="update student set name=?,age=?,gender=?,grade=?,college=?,specialty=?,address=? where sid=?";
         //2.执行sql
         template.update(sql,student.getName(),student.getAge(),student.getGender(),
-                student.getClassId(),student.getAddress(),student.getSid());
+                student.getGrade(),student.getCollege(),student.getSpecialty(),student.getAddress(),student.getSid());
+    }
+
+    @Override
+    public List<Student> findAllStudent() {
+        //1.定义sql
+        String sql="select * from student";
+        //2.执行sql
+        return template.query(sql,new BeanPropertyRowMapper<>(Student.class));
+    }
+
+    @Override
+    @SuppressWarnings("all")
+    public List<Student> queryStudent(Map<String, String[]> condition) {
+        //1.定义sql
+        String sql="select * from student where 1=1";
+        StringBuilder sb = new StringBuilder(sql);
+        //2.遍历map
+        //定义参数的集合
+        List<Object> params=new ArrayList<>();
+        Set<String> keySet = condition.keySet();
+        for (String k : keySet) {
+            //获取value
+            String value = condition.get(k)[0];
+            if (value!=null&&!"".equals(value)){
+                //参数有值
+                sb.append(" and "+k+" like ? ");
+                params.add("%"+value+"%");
+            }
+        }
+        sql=sb.toString();
+        return template.query(sql,new BeanPropertyRowMapper<>(Student.class),params.toArray());
     }
 }

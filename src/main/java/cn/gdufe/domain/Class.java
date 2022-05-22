@@ -2,13 +2,12 @@ package cn.gdufe.domain;
 
 public class Class {
     private int id;
-    private String classId;
-    private String year;
-    private String specialty;
     private String college;
-    private String number;
-    private String proportion;
-    private String headteacher;
+    private String specialty;
+    private String  grade;
+    private int studentNum;
+    private int teacherNum;
+
 
     public int getId() {
         return id;
@@ -16,30 +15,6 @@ public class Class {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getClassId() {
-        return classId;
-    }
-
-    public void setClassId(String classId) {
-        this.classId = classId;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public String getSpecialty() {
-        return specialty;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
     }
 
     public String getCollege() {
@@ -50,41 +25,47 @@ public class Class {
         this.college = college;
     }
 
-    public String getNumber() {
-        return number;
+    public String getSpecialty() {
+        return specialty;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
     }
 
-    public String getProportion() {
-        return proportion;
+    public String getGrade() {
+        return grade;
     }
 
-    public void setProportion(String proportion) {
-        this.proportion = proportion;
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
-    public String getHeadteacher() {
-        return headteacher;
+    public int getStudentNum() {
+        return studentNum;
     }
 
-    public void setHeadteacher(String headteacher) {
-        this.headteacher = headteacher;
+    public void setStudentNum(int studentNum) {
+        this.studentNum = studentNum;
+    }
+
+    public int getTeacherNum() {
+        return teacherNum;
+    }
+
+    public void setTeacherNum(int teacherNum) {
+        this.teacherNum = teacherNum;
     }
 
     @Override
     public String toString() {
         return "Class{" +
                 "id=" + id +
-                ", classId='" + classId + '\'' +
-                ", year='" + year + '\'' +
-                ", specialty='" + specialty + '\'' +
                 ", college='" + college + '\'' +
-                ", number='" + number + '\'' +
-                ", proportion='" + proportion + '\'' +
-                ", headteacher='" + headteacher + '\'' +
+                ", specialty='" + specialty + '\'' +
+                ", grade='" + grade + '\'' +
+                ", studentNum=" + studentNum +
+                ", teacherNum=" + teacherNum +
                 '}';
     }
 }

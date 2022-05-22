@@ -1,44 +1,48 @@
 package cn.gdufe.service;
 
-import cn.gdufe.domain.PageBean;
 import cn.gdufe.domain.Student;
 
+import java.util.List;
 import java.util.Map;
 
 public interface StudentService {
 
     /**
      * 添加学生
-     * @param student
+     * @param student 学生对象
      */
     void addStudent(Student student);
 
     /**
      * 通过id查询学生
-     * @param sid
-     * @return
+     * @param sid 学生id
+     * @return 学生对象
      */
     Student findStudent(String sid);
 
 
     /**
      * 删除学生
-     * @param sid
+     * @param sid 学生id
      */
     void deleteStudent(String sid);
 
     /**
-     * 分页查询学生
-     * @param currentPage 当前页码
-     * @param rows
-     * @param condition
-     * @return
-     */
-    PageBean<Student> findStudentByPage(String currentPage, String rows, Map<String, String[]> condition);
-
-    /**
      * 更新学生信息
-     * @param student
+     * @param student 学生对象
      */
     void updateStudent(Student student);
+
+    /**
+     * 查看学生
+     * @return 学生集合
+     */
+    List<Student> findAllStudent();
+
+    /**
+     * 按条件查询学生
+     * @param condition 条件
+     * @return 满足条件的学生
+     */
+    List<Student> queryStudent(Map<String, String[]> condition);
 }

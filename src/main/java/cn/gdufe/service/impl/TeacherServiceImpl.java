@@ -2,7 +2,6 @@ package cn.gdufe.service.impl;
 
 import cn.gdufe.dao.TeacherDao;
 import cn.gdufe.dao.impl.TeacherDaoImpl;
-import cn.gdufe.domain.PageBean;
 import cn.gdufe.domain.Teacher;
 import cn.gdufe.service.TeacherService;
 
@@ -28,33 +27,17 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public PageBean<Teacher> findTeacherByPage(String _currentPage, String _rows, Map<String, String[]> condition) {
-        int currentPage=Integer.parseInt(_currentPage);
-        int rows=Integer.parseInt(_rows);
-        if (currentPage<=0){
-            currentPage=1;
-        }
-        //1.创建空PageBean对象
-        PageBean<Teacher> teacherPageBean = new PageBean<>();
-        //2.设置参数
-        teacherPageBean.setCurrentPage(currentPage);
-        teacherPageBean.setRows(rows);
-        //3.调用dao查询总记录数
-        int totalCount=dao.findTotalCount(condition);
-        teacherPageBean.setTotalPage(totalCount);
-        //4.调用dao查询List集合
-        //计算开始的记录索引
-        int start=(currentPage-1)*rows;
-        List<Teacher> list=dao.findByPage(start,rows,condition);
-        teacherPageBean.setList(list);
-        //5.计算总页码
-        int totalPage=(totalCount%rows)==0?(totalCount/rows):(totalCount/rows)+1;
-        teacherPageBean.setTotalPage(totalPage);
-        return teacherPageBean;
+    public void updateTeacher(Teacher teacher) {
+        dao.updateTeacher(teacher);
     }
 
     @Override
-    public void updateTeacher(Teacher teacher) {
-        dao.updateTeacher(teacher);
+    public List<Teacher> findAllTeacher() {
+        return dao.findAllTeacher();
+    }
+
+    @Override
+    public List<Teacher> queryTeacher(Map<String, String[]> condition) {
+        return dao.queryTeacher(condition);
     }
 }
