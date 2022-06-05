@@ -27,7 +27,7 @@ public class FindStudentServlet extends HttpServlet {
         //3.将数据存入session
         HttpSession session = request.getSession();
         session.setAttribute("student",student);
-        request.getRequestDispatcher("/updateStudent.jsp").forward(request,response);
+        request.getRequestDispatcher("/student-update.jsp").forward(request,response);
     }
 
     @Override

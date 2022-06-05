@@ -28,7 +28,7 @@ public class ClassListServlet extends HttpServlet {
         //3.响应
         HttpSession session = request.getSession();
         session.setAttribute("classes",c);
-        request.getRequestDispatcher("/selectClass.jsp").forward(request,response);
+        request.getRequestDispatcher("/class-list.jsp").forward(request,response);
     }
 
     @Override

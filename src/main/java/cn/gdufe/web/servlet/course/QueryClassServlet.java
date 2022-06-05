@@ -33,7 +33,7 @@ public class QueryClassServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("cs",list);
         System.out.println(list);
-        request.getRequestDispatcher("/selectClass.jsp").forward(request,response);
+        request.getRequestDispatcher("/class-list.jsp").forward(request,response);
     }
 
     @Override

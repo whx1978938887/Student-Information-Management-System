@@ -26,7 +26,7 @@ public class FindUserServlet extends HttpServlet {
         request.setAttribute("user",user);
 
         //4.转发到update.jsp
-        request.getRequestDispatcher("/edit_user.jsp").forward(request,response);
+        request.getRequestDispatcher("/user.jsp").forward(request,response);
     }
 
     @Override

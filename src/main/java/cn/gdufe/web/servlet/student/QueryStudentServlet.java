@@ -24,6 +24,9 @@ public class QueryStudentServlet extends HttpServlet {
 
         //2.获取参数
         Map<String, String[]> condition = request.getParameterMap();
+        for (String s : condition.keySet()) {
+            System.out.println(s);
+        }
 
         //3.查询学生数据
         StudentService service=new StudentServiceImpl();
@@ -32,7 +35,7 @@ public class QueryStudentServlet extends HttpServlet {
         //4.响应
         HttpSession session = request.getSession();
         session.setAttribute("students",list);
-        request.getRequestDispatcher("/selectStudent.jsp").forward(request,response);
+        request.getRequestDispatcher("/student-list.jsp").forward(request,response);
     }
 
     @Override

@@ -50,5 +50,6 @@
     <orderEntry type="library" name="Maven: com.alibaba.fastjson2:fastjson2-extension:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba.fastjson2:fastjson2:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20220320" level="project" />
+    <orderEntry type="library" name="Maven: javax.servlet.jsp:jsp-api:2.2.1-b03" level="project" />
   </component>
 </module>

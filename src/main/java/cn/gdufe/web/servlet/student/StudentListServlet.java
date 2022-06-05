@@ -28,7 +28,7 @@ public class StudentListServlet extends HttpServlet {
         //3.将数据存入session
         HttpSession session = request.getSession();
         session.setAttribute("students",list);
-        request.getRequestDispatcher("/selectStudent.jsp").forward(request,response);
+        request.getRequestDispatcher("/student-list.jsp").forward(request,response);
     }
 
     @Override

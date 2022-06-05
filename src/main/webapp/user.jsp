@@ -1,187 +1,101 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>学生信息管理系统</title>
-    <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/edit.css">
-    <link rel="stylesheet" href="css/query.css">
-    <script type="text/javascript">
-        window.onload=function (){
-            let personal_btn = document.getElementById('personal_btn');
-            let personal_btn1 = document.getElementById('personal_btn1');
-            let personal_ins = document.querySelectorAll('.personal_in');
-            let per_ls = document.querySelectorAll('.per_l');
-            personal_btn.onclick=function (){
-                for (let i = 0; i < personal_ins.length; i++) {
-                    personal_ins[i].style.display='block';
-                }
-                for (let i = 0; i < per_ls.length; i++) {
-                    per_ls[i].style.display='none';
-                }
-                personal_btn1.style.display='block';
-            }
-        }
-    </script>
+    <title>首页</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.js"></script>
 </head>
-
 <body>
-    <div class="menu">
-        <div class="left">
-            <ul>
-                <li class="tab_list left_l">
-                    <span class="iconfont iconfont_left">&#xe924;</span>
-                    <a href="#" class="left_a">主页面</a>
-                    <span class="iconfont iconfont_right">&#xeb6d;</span>
-                </li>
-                <ul class="tab">
-                    <li class="left_l hide_color">
-                        <span class="iconfont iconfont_left">&#xe99d;</span>
-                        <a href="${pageContext.request.contextPath}/main.jsp" class="left_a">控制面板</a>
-                    </li>
-                </ul>
-                <li class="tab_list left_l">
-                    <span class="iconfont iconfont_left">&#xe607;</span>
-                    <a href="#" class="left_a">学生信息管理</a>
-                    <span class="iconfont iconfont_right">&#xeb6d;</span>
-                </li>
-                <ul class="tab">
-                    <li class="left_l hide_color">
-                        <span class="iconfont iconfont_left">&#xe99d;</span>
-                        <a href="${pageContext.request.contextPath}/addStudent.jsp" class="left_a">添加学生信息</a>
-                    </li>
-                    <li class="left_l hide_color">
-                        <span class="iconfont iconfont_left">&#xe99d;</span>
-                        <a href="${pageContext.request.contextPath}/selectStudent.jsp" class="left_a">查询学生信息</a>
-                    </li>
-                </ul>
+<div class="content">
 
-                <li class="tab_list left_l">
-                    <span class="iconfont iconfont_left">&#xe607;</span>
-                    <a href="#" class="left_a">教师信息管理</a>
-                    <span class="iconfont iconfont_right">&#xeb6d;</span>
-                </li>
-                <ul class="tab">
-                    <li class="left_l hide_color">
-                        <span class="iconfont iconfont_left">&#xe99d;</span>
-                        <a href="${pageContext.request.contextPath}/addTeacher.jsp" class="left_a">添加教师信息</a>
-                    </li>
-                    <li class="left_l hide_color">
-                        <span class="iconfont iconfont_left">&#xe99d;</span>
-                        <a href="${pageContext.request.contextPath}/selectTeacher.jsp" class="left_a">查询教师信息</a>
-                    </li>
-                </ul>
-                <li class="tab_list left_l">
-                    <span class="iconfont iconfont_left">&#xe607;</span>
-                    <a href="#" class="left_a">班级信息管理</a>
-                    <span class="iconfont iconfont_right">&#xeb6d;</span>
-                </li>
-                <ul class="tab">
-                    <li class="left_l hide_color">
-                        <span class="iconfont iconfont_left">&#xe99d;</span>
-                        <a href="${pageContext.request.contextPath}/selectClass.jsp" class="left_a">查询班级信息</a>
-                    </li>
-                </ul>
-                <li class="tab_list left_l">
-                    <span class="iconfont iconfont_left">&#xe70b;</span>
-                    <a href="#" class="left_a">个人中心</a>
-                    <span class="iconfont iconfont_right">&#xeb6d;</span>
-                </li>
-                <ul class="tab">
-                    <li class="left_l hide_color">
-                        <span class="iconfont iconfont_left">&#xe99d;</span>
-                        <a href="${pageContext.request.contextPath}/updateUserServlet" class="left_a">个人中心</a>
-                    </li>
-                </ul>
-            </ul>
+    <!--侧边栏-->
+    <div class="left left-content">
+        <!--列表组-->
+        <div class="list-group">
+            <a href="${pageContext.request.contextPath}/main.jsp" class="list-group-item">首页</a>
+            <a href="${pageContext.request.contextPath}/student-list.jsp" class="list-group-item">学生信息管理</a>
+            <a href="${pageContext.request.contextPath}/teacher-list.jsp" class="list-group-item">教师信息管理</a>
+            <a href="${pageContext.request.contextPath}/class-list.jsp" class="list-group-item">班级信息管理</a>
+            <a href="${pageContext.request.contextPath}/findUserServlet" class="list-group-item active">用户</a>
         </div>
-        <div class="right">
-            <div class="title">
-                用户名：${user.username}&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/exitServlet">退出</a>
+    </div>
+
+
+    <!--内容-->
+    <div class="right right-content">
+
+        <!--用户信息及操作-->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="left">用户空间</div>
+                <div class="btn-group right">
+                    <a href="${pageContext.request.contextPath}/exitServlet" class="btn btn-default">退出</a>
+                </div>
             </div>
-            <div class="content">
+        </div>
+
+        <!--控制面板-->
+        <div class="panel panel-default">
+            <!--面板头部-->
+            <div class="panel-heading">
+                <h3 class="panel-title">用户信息</h3>
+            </div>
+
+            <!--面板内容-->
+            <div class="panel-body">
                 <form action="${pageContext.request.contextPath}/updateUserServlet" method="post">
-                    <table id="personal" cellpadding="0" cellspacing="0">
-                        <caption id="per_captional">
-                            <span id="personal_icon" class="iconfont iconfont_left">&#xe70b;</span>
-                            账号信息
-                        </caption>
-                        <tr>
-                            <th class="personal_th" width="200px">用户名 :</th>
-                            <th class="personal_th">
-                                <div>${user.username}</div>
-                                <!--隐藏域 提交id-->
-                                <input type="hidden" name="username" value="${user.username}">
-                                <div class="personal_warn">请输入8个以内字符!</div>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="personal_th" width="200px">姓名:</th>
-                            <th class="personal_th">
-                                <div class="per_l">${user.name}</div>
-                                <input type="text" name="name" id="name" class="personal_in" value="${user.name}">
-                                <div class="personal_warn">请输入9位正整数!</div>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="personal_th" width="200px">密码 :</th>
-                            <th class="personal_th">
-                                <div class="per_l">${user.password}</div>
-                                <input type="text" name="password" id="per_password" class="personal_in" value="${user.password}">
-                                <div class="personal_warn">请输入12个以内非中文字符!</div>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="personal_th" width="200px">邮箱 :</th>
-                            <th class="personal_th">
-                                <div class="per_l">${user.email}</div>
-                                <input type="text" name="email" id="per_name" class="personal_in" value="${user.email}">
-                                <div class="personal_warn">请输入8个以内中文字符!</div>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="personal_th" width="200px">手机号 :</th>
-                            <th class="personal_th">
-                                <div class="per_l">${user.phone}</div>
-                                <input type="text" name="phone" id="per_phonenum" class="personal_in" value="${user.phone}">
-                                <div class="personal_warn">请输入11位正整数!</div>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="personal_th" width="200px">性别 :</th>
-                            <th class="personal_th">
-                                <div class="per_l">${user.gender}</div>
-                                <c:if test="${user.gender=='男'}">
-                                    <div class="personal_in" id="personal_sex">
-                                        <input type="radio" name="gender" value="男" checked="checked"> 男
-                                        <input type="radio" name="gender" value="女"> 女
-                                    </div>
-                                </c:if>
-                                <c:if test="${user.gender=='女'}">
-                                    <div class="personal_in" id="personal_sex">
-                                        <input type="radio" name="gender" value="男"> 男
-                                        <input type="radio" name="gender" value="女" checked="checked"> 女
-                                    </div>
-                                </c:if>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="button" id="personal_btn" value="编辑">
-                            </th>
-                            <th>
-                                <input type="submit" id="personal_btn1" value="确定">
-                            </th>
-                        </tr>
-                    </table>
+                    <input type="text" name="username" value="${user.username}" style="display: none">
+                    <div class="left left-group tab">
+                        <div class="input-group">
+                            <span class="input-group-addon">用户名</span>
+                            <div class="form-control">${user.username}</div>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">姓名</span>
+                            <input type="text" name="name" value="${user.name}" class="form-control" placeholder="${user.name}" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">密码</span>
+                            <input type="text" name="password" value="${user.password}" class="form-control" placeholder="${user.password}" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">邮箱</span>
+                            <input type="text" name="email" value="${user.email}" class="form-control" placeholder="${user.email}" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">手机号</span>
+                            <input type="text" name="phone" value="${user.phone}" class="form-control" placeholder="${user.phone}" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">性别</span>
+                            <c:if test="${user.gender=='男'}">
+                                <div class="form-control not-border">
+                                    <input type="radio"  name="gender" value="男" checked/>男
+                                    <input type="radio" name="gender" value="女"/>女
+                                </div>
+                            </c:if>
+                            <c:if test="${user.gender=='女'}">
+                                <div class="form-control not-border">
+                                    <input type="radio"  name="gender" value="男"/>男
+                                    <input type="radio" name="gender" value="女" checked/>女
+                                </div>
+                            </c:if>
+                        </div>
+                    </div>
+
+                    <div style="clear: both"></div>
+                    <div class="btn-group tab" role="group">
+                        <button type="submit" class="btn btn-default">保存</button>
+                    </div>
                 </form>
             </div>
         </div>
-        <script src="js/menu.js"></script>
     </div>
+</div>
 </body>
-
 </html>
